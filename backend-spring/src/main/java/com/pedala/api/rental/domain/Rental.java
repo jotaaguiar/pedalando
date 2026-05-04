@@ -5,8 +5,9 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "rentals")
@@ -128,11 +129,11 @@ public class Rental {
 
     @OneToMany(mappedBy = "rental", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Builder.Default
-    private List<RentalInvoice> faturas = new ArrayList<>();
+    private Set<RentalInvoice> faturas = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "rental", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Builder.Default
-    private List<RentalRenewal> renovacoes = new ArrayList<>();
+    private Set<RentalRenewal> renovacoes = new LinkedHashSet<>();
 
     public void addFatura(RentalInvoice fatura) {
         faturas.add(fatura);

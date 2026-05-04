@@ -1,8 +1,7 @@
 spring:
   application:
     name: pedala-api
-  profiles:
-    active: dev
+
 
   datasource:
     url: ${DB_URL:jdbc:mysql://localhost:3306/pedala?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
@@ -13,7 +12,7 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
@@ -56,7 +55,7 @@ app:
     max-size-mb: 8
 
   gemini:
-    api-key: ${GEMINI_API_KEY:AIzaSyAI0Nz74egt7NVCxMAUYDpYICS16MAMOTM}
+    api-key: ${GEMINI_API_KEY:AIzaSyBr0G0PfpCccvJAKU2P9roaL8zyozT1xv0}
 logging:
   level:
     com.pedala: DEBUG

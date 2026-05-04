@@ -1,53 +1,70 @@
-# Como Usar — Pedala Backend
+# Como Executar o Projeto Pedala
 
-Guia passo a passo para rodar o Pedala localmente.
+Este guia descreve como configurar e executar o ambiente de desenvolvimento completo do projeto Pedala (backend, frontend e banco de dados) usando Docker.
 
----
+## Pré-requisitos
 
-## Pre-requisitos
+-   **Docker e Docker Compose**: Certifique-se de que o [Docker Desktop](https://www.docker.com/products/docker-desktop/) está instalado e em execução na sua máquina.
 
-- **Node.js** versao 16 ou superior: https://nodejs.org/
-- **Terminal** (PowerShell, CMD ou bash)
+## Passos para Execução
 
-Verifique se o Node esta instalado:
-```bash
-node -v
-npm -v
-```
+1.  **Navegue até a Pasta Raiz**:
+    Abra um terminal e navegue até a pasta `pedalando`, onde o arquivo `docker-compose.yml` está localizado.
 
----
+2.  **Construa e Inicie os Contêineres**:
+    Execute o seguinte comando no seu terminal. Este comando irá construir a imagem da aplicação (se ainda não tiver sido construída), baixar a imagem do MySQL e iniciar ambos os serviços em background.
 
-## 1. Instalar dependencias
+    ```bash
+    docker-compose up --build -d
+    ```
 
-```bash
-cd backend
-npm install
-```
+    -   `--build`: Força a reconstrução da imagem da API caso haja alguma alteração no código-fonte ou no `Dockerfile`.
+    -   `-d`: (Detached mode) Executa os contêineres em segundo plano.
 
----
+3.  **Acesse a Aplicação**:
+    Após a conclusão do comando, o ambiente estará pronto:
 
-## 2. Arquivo de configuracao (.env)
+    -   **Backend (API)**: A API Spring Boot estará acessível em `http://localhost:8080`.
+    -   **Frontend**: Para acessar a interface do usuário, abra o arquivo `frontend/index.html` diretamente no seu navegador.
+    -   **Banco de Dados**: O banco de dados MySQL estará acessível na porta `3306` (para ferramentas como DBeaver, use `localhost:3306` com usuário `root` e senha `root`).
 
-Crie o arquivo `backend/.env` com o conteudo abaixo:
+## Gerenciando o Ambiente
 
-```env
-PORT=3001
-JWT_SECRET=pedala-secret-2025
-GPS_API_KEY=pedala-gps-2025
-```
+-   **Verificar Logs**:
+    Para ver os logs dos contêineres em tempo real, use:
+    ```bash
+    docker-compose logs -f
+    ```
+    Para ver os logs de um serviço específico (ex: `api`):
+    ```bash
+    docker-compose logs -f api
+    ```
 
-> Troque `JWT_SECRET` por uma chave forte em producao.
+-   **Parar os Contêineres**:
+    Para parar todos os serviços sem remover os dados:
+    ```bash
+    docker-compose down
+    ```
 
----
+-   **Recriar o Banco de Dados (Reset)**:
+    Se você precisar apagar todos os dados do banco de dados e começar do zero (útil ao adicionar novos scripts de migração SQL), siga estes passos:
+    ```bash
+    # 1. Pare e remova os contêineres
+    docker-compose down
 
-## 3. Rodar o servidor
+    # 2. Remova o volume do MySQL (ATENÇÃO: ISSO APAGA TODOS OS DADOS)
+    docker volume rm pedalando_pedala-mysql-data
 
-```bash
-node server.js
-```
+    # 3. Inicie tudo novamente
+    docker-compose up --build -d
+    ```
 
-**Saida esperada:**
-```
+## Credenciais Padrão
+
+-   **Usuário Admin**: `admin@pedala.com` / `123456`
+-   **Usuário Funcionário**: `funcionario@pedala.com` / `123456`
+-   **Usuário Cliente**: `user@pedala.com` / `123456`
+
 [seed] admin criado: admin@pedala.com
 [seed] funcionario criado: funcionario@pedala.com
 

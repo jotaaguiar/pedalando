@@ -117,26 +117,18 @@ function renderCatalog() {
 
       return `
         <article class="bike-card" data-cat="${escapeHtml(bike.categoria)}">
-          <div class="bike-photo">
-            <span class="bike-signal ${activeStatus.class}">${escapeHtml(activeStatus.text)}</span>
-            <img src="${escapeHtml(image)}" alt="${escapeHtml(bike.nome)}" loading="lazy" onerror="this.outerHTML='<span class=&quot;bike-photo-label&quot;>Imagem indisponivel</span>'">
+          <div class="bike-img">
+            <span class="bike-badge ${activeStatus.class}">${escapeHtml(activeStatus.text)}</span>
+            <img src="${escapeHtml(image)}" alt="${escapeHtml(bike.name)}" loading="lazy" onerror="this.outerHTML='<span class=&quot;bike-photo-label&quot;>Imagem indisponível</span>'">
           </div>
-          <div class="bike-info">
-            <div class="bike-head">
-              <div>
-                <div class="bike-cat">${escapeHtml(bike.categoria)}</div>
-                <div class="bike-name">${escapeHtml(bike.nome)}</div>
-              </div>
-            </div>
-            <div class="bike-desc">${escapeHtml(bike.descricao || 'Ideal para o dia a dia urbano.')}</div>
-            <div class="bike-specs">${traits}</div>
+          <div class="bike-body">
+            <div class="bike-cat">${escapeHtml(bike.categoria)}</div>
+            <h3 class="bike-name">${escapeHtml(bike.nome)}</h3>
+            <p class="bike-desc" style="font-size: 0.9rem; color: var(--color-text-muted); height: 3.2em; overflow: hidden;">${escapeHtml(bike.descricao || 'Ideal para o dia a dia urbano.')}</p>
             <div class="bike-footer">
-              <div class="dflex-between">
-                <div class="bike-price">${escapeHtml(formatCurrency(bike.precos?.semanal))}<span class="bike-price-label">/ semana</span></div>
-                <div class="bike-qty" style="${available ? '' : 'color:var(--danger);'}">${available ? `${bike.quantidadeDisponivel} livres` : 'Indisponível'}</div>
-              </div>
-              <button class="btn btn-rent" type="button" data-bike-action="rent" data-bike-id="${bike.id}" ${available ? '' : 'disabled'}>
-                ${available ? 'Solicitar locação' : 'Sem estoque'}
+              <div class="bike-price">${escapeHtml(formatCurrency(bike.precos?.semanal))}<span>/semana</span></div>
+              <button class="btn btn-primary btn-sm" type="button" data-bike-action="rent" data-bike-id="${bike.id}" ${available ? '' : 'disabled'}>
+                ${available ? 'Assinar' : 'Esgotado'}
               </button>
             </div>
           </div>

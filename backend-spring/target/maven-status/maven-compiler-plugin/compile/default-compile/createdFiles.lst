@@ -50,6 +50,7 @@ com\pedala\api\user\dto\UpdateProfileRequest.class
 com\pedala\api\security\UserPrincipal.class
 com\pedala\api\user\dto\LoginRequest.class
 com\pedala\api\user\domain\User$UserBuilder.class
+com\pedala\api\config\WebConfig.class
 com\pedala\api\gps\service\GpsSimulatorService.class
 com\pedala\api\rental\domain\RentalStatus.class
 com\pedala\api\user\domain\UserAddress.class

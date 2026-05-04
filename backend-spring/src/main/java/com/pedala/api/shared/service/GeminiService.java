@@ -27,7 +27,7 @@ public class GeminiService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public String askChatbot(String userMessage) {
-        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent";
+        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
 
         // Obter as bikes disponiveis para informar o chatbot
         List<Bike> bikes = bikeRepository.findAll();
@@ -36,7 +36,7 @@ public class GeminiService {
             catalogo.append(b.getNome()).append(" (").append(b.getCategoria()).append("): R$").append(b.getPrecoSemanal()).append("/sem. ");
         }
 
-        String systemPrompt = "Você é o assistente da PedaLá. Recomende objetivamente uma bike deste catálogo: " + catalogo.toString() + 
+        String systemPrompt = "Você é o assistente da PedaLá. Responda de forma extremamente curta e direta (máximo 2 frases). Recomende uma bike deste catálogo: " + catalogo.toString() + 
                               "\nUsuário: " + userMessage;
 
         Map<String, Object> requestBody = Map.of(
@@ -72,7 +72,7 @@ public class GeminiService {
         } catch (org.springframework.web.client.HttpClientErrorException e) {
             log.error("Erro de Cliente na Gemini API: {} - Status: {} - Body: {}", 
                 url, e.getStatusCode(), e.getResponseBodyAsString());
-            return "Erro na API Gemini: " + e.getStatusCode() + ". Verifique se o modelo 'gemini-1.5-flash' está disponível para sua chave.";
+            return "Erro na API Gemini: " + e.getStatusCode() + ". Verifique se o modelo 'gemini-flash-latest' está disponível para sua chave e se ela possui saldo/permissão.";
         } catch (Exception e) {
             log.error("Erro generico na API da Gemini: ", e);
             return "Desculpe, ocorreu um erro inesperado ao falar com o Gemini. Verifique o console do backend.";
