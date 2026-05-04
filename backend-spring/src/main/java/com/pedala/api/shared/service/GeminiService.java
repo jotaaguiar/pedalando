@@ -27,7 +27,7 @@ public class GeminiService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public String askChatbot(String userMessage) {
-        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent";
+        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent";
 
         // Obter as bikes disponiveis para informar o chatbot
         List<Bike> bikes = bikeRepository.findAll();
@@ -102,7 +102,7 @@ public class GeminiService {
             log.error("Erro de Cliente na Gemini API: {} - Status: {} - Body: {}",
                     url, e.getStatusCode(), e.getResponseBodyAsString());
             return "Erro na API Gemini: " + e.getStatusCode()
-                    + ". Verifique se o modelo 'gemini-3-flash' está disponível para sua chave e se ela possui saldo/permissão.";
+                    + ". Verifique se o modelo 'gemini-3.1-flash-lite-preview' está disponível para sua chave e se ela possui saldo/permissão.";
         } catch (Exception e) {
             log.error("Erro generico na API da Gemini: ", e);
             return "Desculpe, ocorreu um erro inesperado ao falar com o Gemini. Verifique o console do backend.";

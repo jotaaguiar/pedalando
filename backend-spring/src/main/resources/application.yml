@@ -55,7 +55,7 @@ app:
     max-size-mb: 8
 
   gemini:
-    api-key: ${GEMINI_API_KEY:AIzaSyBr0G0PfpCccvJAKU2P9roaL8zyozT1xv0}
+    api-key: ${GEMINI_API_KEY:AIzaSyBkC_fMamK3sM_VXCFs5s9Af4wxfhb5zHU}
 logging:
   level:
     com.pedala: DEBUG

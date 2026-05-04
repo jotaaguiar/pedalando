@@ -26,6 +26,7 @@ services:
       DB_PASSWORD: root
       JWT_SECRET: pedala_secret_key_2024_production_very_long_secure_key_256bits
       PORT: 8080
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
     ports:
       - "8080:8080"
     volumes:
