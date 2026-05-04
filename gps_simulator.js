@@ -13,7 +13,7 @@
 
 const http = require('http');
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = 'http://localhost:8080/api';
 const GPS_API_KEY = process.env.GPS_API_KEY || 'pedala-gps-2025';
 const INTERVAL_MS = 5000; // 5 segundos
 
