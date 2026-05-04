@@ -56,6 +56,7 @@ app:
 
   gemini:
     api-key: ${GEMINI_API_KEY:AIzaSyBkC_fMamK3sM_VXCFs5s9Af4wxfhb5zHU}
+    model: ${GEMINI_MODEL:gemini-3.1-flash-lite}
 logging:
   level:
     com.pedala: DEBUG

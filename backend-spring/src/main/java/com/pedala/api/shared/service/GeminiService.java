@@ -20,14 +20,20 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class GeminiService {
 
+    private static final String GEMINI_GENERATE_CONTENT_URL =
+            "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent";
+
     @Value("${app.gemini.api-key}")
     private String apiKey;
+
+    @Value("${app.gemini.model:gemini-3.1-flash-lite}")
+    private String model;
 
     private final BikeRepository bikeRepository;
     private final RestTemplate restTemplate = new RestTemplate();
 
     public String askChatbot(String userMessage) {
-        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent";
+        String url = GEMINI_GENERATE_CONTENT_URL.formatted(model);
 
         // Obter as bikes disponiveis para informar o chatbot
         List<Bike> bikes = bikeRepository.findAll();
@@ -102,7 +108,7 @@ public class GeminiService {
             log.error("Erro de Cliente na Gemini API: {} - Status: {} - Body: {}",
                     url, e.getStatusCode(), e.getResponseBodyAsString());
             return "Erro na API Gemini: " + e.getStatusCode()
-                    + ". Verifique se o modelo 'gemini-3.1-flash-lite-preview' está disponível para sua chave e se ela possui saldo/permissão.";
+                    + ". Verifique se o modelo '" + model + "' está disponível para sua chave e se ela possui saldo/permissão.";
         } catch (Exception e) {
             log.error("Erro generico na API da Gemini: ", e);
             return "Desculpe, ocorreu um erro inesperado ao falar com o Gemini. Verifique o console do backend.";

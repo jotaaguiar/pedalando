@@ -36,7 +36,7 @@
     <section class="hero-bebike" id="home">
       <div class="site-wrap hero-grid">
         <div class="hero-content" data-reveal>
-          <span class="badge-new">Novo modelo de assinatura</span>
+          <span class="badge-new">Assinatura urbana premium</span>
           <h1>Sua cidade, <br>suas regras, <br><span class="text-primary">sua Pedala.</span></h1>
           <p>Bicicletas premium com manutenção inclusa e entrega em casa. A liberdade que você merece para pedalar por aí.</p>
           <div class="hero-buttons">
@@ -45,6 +45,11 @@
               <i data-lucide="truck"></i>
               <span>Entrega em <strong>1 dia útil</strong></span>
             </div>
+          </div>
+          <div class="hero-trust">
+            <span>Manutenção inclusa</span>
+            <span>GPS em tempo real</span>
+            <span>Sem fiador</span>
           </div>
           <div class="hero-metrics">
             <div class="metric">
@@ -63,30 +68,41 @@
         </div>
         <div class="hero-visual" data-reveal>
           <div class="bike-circle"></div>
+          <div class="bike-orbit bike-orbit-one"></div>
+          <div class="bike-orbit bike-orbit-two"></div>
           <img id="heroBikeImage" src="assets/images/hero-bike.png" alt="Bicicleta Pedala">
+          <div class="hero-mini-card hero-mini-card-left">
+            <i data-lucide="shield-check"></i>
+            <span>Proteção e suporte técnico</span>
+          </div>
           <div class="hero-bike-card" id="heroBikePriceCard">
             <div class="hb-header">
               <span id="heroBikeCategory">Urban</span>
               <span class="hb-badge" id="heroBikeBadge">Destaque</span>
             </div>
             <h3 id="heroBikeName">Pedala Pro</h3>
+            <p class="hb-desc" id="heroBikeDescription">Bike revisada e pronta para o seu trajeto.</p>
             <div class="hb-price">
               <span id="heroBikePrice">R$ 169</span><small>/mês</small>
+            </div>
+            <div class="hb-meta">
+              <span id="heroBikeAvailability">Disponível</span>
+              <span id="heroBikeRange">Entrega agendada</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section-partners">
+    <section class="section-partners section-benefits-strip">
       <div class="site-wrap">
-        <div class="partners-row">
-          <span>Parceiros Oficiais:</span>
-          <div class="logos">
-            <div class="logo-item">TechCorp</div>
-            <div class="logo-item">UrbanFlow</div>
-            <div class="logo-item">GreenLife</div>
-            <div class="logo-item">Velocity</div>
+        <div class="partners-row benefits-row">
+          <span>Incluído na assinatura</span>
+          <div class="logos benefit-logos">
+            <div class="logo-item">Entrega agendada</div>
+            <div class="logo-item">Manutenção preventiva</div>
+            <div class="logo-item">Planos flexíveis</div>
+            <div class="logo-item">Rastreamento GPS</div>
           </div>
         </div>
       </div>
@@ -121,7 +137,11 @@
     <section class="section bg-light" id="catalogo">
       <div class="site-wrap">
         <div class="section-header" data-reveal>
-          <h2 class="title-lg">Nossa Frota</h2>
+          <div>
+            <span class="section-eyebrow">Catálogo vivo</span>
+            <h2 class="title-lg">Nossa Frota</h2>
+            <p class="subtitle">Modelos revisados, prontos para entrega e com plano sob medida para sua rotina.</p>
+          </div>
           <div class="catalog-controls">
             <div id="filterBtns" class="filter-group"></div>
             <span id="catalogSummary" class="summary-text"></span>
