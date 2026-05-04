@@ -155,8 +155,13 @@ public class AdminService {
         if (!"aguardando_aprovacao".equals(rental.getPagamentoStatus())) {
             throw new BusinessException("Status atual do pagamento: " + rental.getPagamentoStatus() + ". Nao esta aguardando aprovacao.");
         }
+        var agora = timeSimulator.now();
+        rental.getFaturas().forEach(f -> {
+            f.setStatus("pago");
+            f.setPagoEm(agora);
+        });
         rental.setPagamentoStatus("aprovado");
-        rental.setPagamentoAprovadoEm(timeSimulator.now());
+        rental.setPagamentoAprovadoEm(agora);
         rental.setPagamentoAprovadoPor(approverName);
         rental = rentalRepository.save(rental);
         return Map.of("message", "Pagamento da locacao #" + rental.getId() + " aprovado!", "aluguel", rentalService.rentalToMap(rental, timeSimulator.now()));

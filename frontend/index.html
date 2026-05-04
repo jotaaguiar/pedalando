@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pedala | Assinatura de Bicicletas</title>
+  <meta name="description" content="Bicicletas premium com manutenção inclusa e entrega em casa. Assine online, sem burocracia.">
   <link rel="stylesheet" href="css/style.css">
+  <script>(function(){document.documentElement.setAttribute('data-theme',localStorage.getItem('pedala_theme')||'dark');})();</script>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="light-theme">
+<body>
   <nav class="navbar" id="navbar">
     <div class="site-wrap navbar-inner">
       <a href="#" class="logo">
@@ -131,6 +133,62 @@
       </div>
     </section>
 
+    <section class="faq-section" id="faq">
+      <div class="site-wrap">
+        <div class="section-header centered" data-reveal>
+          <h2 class="title-lg">Dúvidas frequentes</h2>
+          <p class="subtitle">Respostas rápidas para as perguntas mais comuns.</p>
+        </div>
+        <div class="faq-list" data-reveal>
+          <div class="faq-item">
+            <button class="faq-q">
+              Como funciona a assinatura?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">A assinatura é flexível: semanal, quinzenal ou mensal. Você escolhe o modelo, assina digitalmente e recebe em casa. Sem fiador, sem burocracia — apenas seu CPF e endereço.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              A manutenção está inclusa no plano?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">Sim! Toda manutenção preventiva está inclusa. Em caso de defeito ou problema mecânico, nossa equipe busca e devolve a bike revisada em até 48 horas.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Posso cancelar a qualquer momento?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">Sim. Não cobramos multa por cancelamento antecipado. Basta solicitar a devolução pelo painel, agendar a retirada e nossa equipe vai buscar a bike no endereço cadastrado.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Quais documentos são necessários para cadastro?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">Apenas CPF e um endereço válido para entrega. Sem comprovante de renda, sem fiador. O processo é 100% digital e a confirmação chega por e-mail em minutos.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              A bike vem com rastreamento GPS?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">Todas as nossas bikes possuem rastreamento GPS integrado. Isso garante mais segurança para você e nos permite oferecer suporte mais rápido em caso de roubo ou perda.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section-cta" data-reveal>
       <div class="site-wrap">
         <div class="cta-box">
@@ -189,16 +247,13 @@
   <script src="js/core/chatbot.js"></script>
   <script>
     lucide.createIcons();
-    
-    // Reveal animation
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('revealed');
       });
     }, { threshold: 0.1 });
-    
+
     document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
   </script>
 </body>

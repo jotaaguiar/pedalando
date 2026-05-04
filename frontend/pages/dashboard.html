@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +20,17 @@
         <div class="nav-avatar" id="navAv">U</div>
         <span class="nav-username" id="navNm">Usuário</span>
       </div>
-      <button class="btn btn-secondary btn-sm" type="button" onclick="sair()" title="Encerrar sessão">Sair</button>
+      <button class="btn btn-secondary btn-sm" type="button" onclick="sair()">Sair</button>
     </div>
   </nav>
 
   <div class="layout">
     <aside class="sidebar">
-      <div class="sidebar-logo">
-        <div class="navbar-logo">
-          <div class="logo-icon">P</div>Pedala
-        </div>
-      </div>
       <ul class="sidebar-nav">
-        <li><a href="#" class="active" onclick="showSec('inicio',this)" id="nav-inicio">Visão Geral</a></li>
-        <li><a href="#" onclick="showSec('locar',this)" id="nav-locar">Nova Locação</a></li>
-        <li><a href="#" onclick="showSec('locacoes',this)" id="nav-locacoes">Histórico</a></li>
-        <li><a href="#" onclick="showSec('perfil',this)" id="nav-perfil">Meus Dados</a></li>
+        <li><a href="#" class="active" onclick="showSec('inicio',this)">Visão Geral</a></li>
+        <li><a href="#" onclick="showSec('locar',this)">Nova Locação</a></li>
+        <li><a href="#" onclick="showSec('locacoes',this)">Histórico</a></li>
+        <li><a href="#" onclick="showSec('perfil',this)">Meus Dados</a></li>
         <li><a href="../index.html">Página Inicial</a></li>
       </ul>
     </aside>
@@ -95,22 +90,20 @@
       </section>
 
       <section id="sec-locacoes" class="sec">
-        <div class="page-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-          <div>
+        <div class="page-header-row">
+          <div class="page-header">
             <h1>Histórico</h1>
             <p>Acompanhe seus aluguéis passados e ativos.</p>
           </div>
-          <button class="btn btn-secondary btn-sm" type="button" onclick="loadLocacoes()" title="Sincronizar histórico">Sincronizar</button>
+          <button class="btn btn-secondary btn-sm" type="button" onclick="loadLocacoes()">Sincronizar</button>
         </div>
         <div id="locList"></div>
       </section>
 
       <section id="sec-perfil" class="sec">
-        <div class="page-header" style="margin-bottom:20px;">
-          <div>
-            <h1>Meus dados</h1>
-            <p>Informações de contato e endereço de entrega.</p>
-          </div>
+        <div class="page-header">
+          <h1>Meus dados</h1>
+          <p>Informações de contato e endereço de entrega.</p>
         </div>
         <div class="card">
           <div class="card-body" id="perfilContent">
@@ -134,7 +127,7 @@
             <div>
               <div class="hero-floating-badge" id="modalBikeCatBadge">Categoria</div>
               <h2 class="modal-title" id="modalBikeName" style="margin-top:12px;">Bike selecionada</h2>
-              <p id="modalBikeDesc">Descricao da bike selecionada.</p>
+              <p id="modalBikeDesc">Descrição da bike selecionada.</p>
             </div>
 
             <div class="bike-features-grid">
@@ -157,8 +150,8 @@
             </div>
 
             <div class="hero-actions">
-              <button class="btn btn-secondary" type="button" onclick="closeModal()" title="Fechar detalhes da bike">Fechar</button>
-              <button class="btn btn-primary" type="button" onclick="goToLocacao()" title="Ir para configuração da locação">Continuar locação</button>
+              <button class="btn btn-secondary" type="button" onclick="closeModal()">Fechar</button>
+              <button class="btn btn-primary" type="button" onclick="goToLocacao()">Continuar locação</button>
             </div>
           </div>
         </div>
@@ -171,19 +164,19 @@
         <div class="form-group">
           <label class="form-label" for="dataInicio">Início da vigência</label>
           <input type="date" id="dataInicio" class="form-input">
-          <p style="color:var(--text-secondary);font-size:0.92rem;margin-top:8px;">A data selecionada não pode exceder quatro dias contados de hoje.</p>
+          <p class="form-hint">A data selecionada não pode exceder quatro dias contados de hoje.</p>
         </div>
         <div id="modalError" class="form-block" style="display:none;color:var(--danger);background:var(--danger-bg);border-color:var(--danger-border);margin-top:12px;"></div>
         <div class="hero-actions" style="margin-top:18px;">
-          <button class="btn btn-secondary" type="button" onclick="backToBikeInfo()" title="Voltar para os detalhes da bike">Voltar</button>
-          <button class="btn btn-primary" type="button" id="confirmBtn" onclick="confirmarLocacao()" title="Confirmar e registrar locação">Confirmar Assinatura</button>
+          <button class="btn btn-secondary" type="button" onclick="backToBikeInfo()">Voltar</button>
+          <button class="btn btn-primary" type="button" id="confirmBtn" onclick="confirmarLocacao()">Confirmar Assinatura</button>
         </div>
       </div>
     </div>
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <button class="scroll-top" id="scrollTop" type="button" title="Voltar ao topo">Top</button>
+  <button class="scroll-top" id="scrollTop" type="button">↑ Topo</button>
 
   <script src="../js/core/app.js"></script>
   <script src="../js/pages/dashboard.page.js"></script>

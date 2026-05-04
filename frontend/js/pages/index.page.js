@@ -119,7 +119,7 @@ function renderCatalog() {
         <article class="bike-card" data-cat="${escapeHtml(bike.categoria)}">
           <div class="bike-img">
             <span class="bike-badge ${activeStatus.class}">${escapeHtml(activeStatus.text)}</span>
-            <img src="${escapeHtml(image)}" alt="${escapeHtml(bike.name)}" loading="lazy" onerror="this.outerHTML='<span class=&quot;bike-photo-label&quot;>Imagem indisponível</span>'">
+            <img src="${escapeHtml(image)}" alt="${escapeHtml(bike.nome)}" loading="lazy" onerror="this.outerHTML='<span class=&quot;bike-photo-label&quot;>Imagem indisponível</span>'">
           </div>
           <div class="bike-body">
             <div class="bike-cat">${escapeHtml(bike.categoria)}</div>

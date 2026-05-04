@@ -27,7 +27,7 @@ public class GeminiService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public String askChatbot(String userMessage) {
-        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
+        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent";
 
         // Obter as bikes disponiveis para informar o chatbot
         List<Bike> bikes = bikeRepository.findAll();
@@ -36,8 +36,31 @@ public class GeminiService {
             catalogo.append(b.getNome()).append(" (").append(b.getCategoria()).append("): R$").append(b.getPrecoSemanal()).append("/sem. ");
         }
 
-        String systemPrompt = "Você é o assistente da PedaLá. Responda de forma extremamente curta e direta (máximo 2 frases). Recomende uma bike deste catálogo: " + catalogo.toString() + 
-                              "\nUsuário: " + userMessage;
+        String systemPrompt = String.format("""
+            # Assistente Pedala (IA)
+            ## Papel
+            Voce atende clientes da assinatura de bicicletas Pedala. Responda em PT-BR.
+
+            ## Informacoes do servico
+            - Assinatura de bikes com planos semanal, quinzenal e mensal.
+            - Processo: escolher bike, selecionar plano, definir data de inicio, entrega agendada.
+            - Pagamento: quando ha fatura pendente, o cliente solicita no painel; aprovacao mantem contrato ativo.
+            - Vistoria: ocorre na devolucao; funcionario avalia bike e registra observacoes antes de finalizar.
+            - Devolucao: cliente solicita no painel e a equipe coleta para vistoria.
+
+            ## Catalogo atual
+            %s
+
+            ## Estilo de resposta
+            - Curta e sucinta, maximo 2 frases.
+            - Sem listas, sem emojis.
+            - Se faltar informacao, pedir um detalhe objetivo.
+
+            ## Resposta esperada
+            Curta e direta, focada no aluguel de bicicletas.
+
+            Mensagem do usuario: %s
+            """, catalogo, userMessage);
 
         Map<String, Object> requestBody = Map.of(
                 "contents", List.of(

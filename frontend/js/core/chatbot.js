@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const loadingId = appendMessage('bot', 'Digitando...');
 
         try {
-            const response = await fetch('http://localhost:8080/api/chat', {
+            const response = await fetch(`${window.PEDALA_API_BASE}/chat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('Erro na resposta do servidor');
 
             const data = await response.json();
-            updateMessage(loadingId, data.reply);
+            updateMessage(loadingId, data.reply || 'Consigo ajudar com aluguel, pagamento, entrega e vistoria.');
         } catch (error) {
             console.error('Chatbot Error:', error);
-            updateMessage(loadingId, 'Desculpe, não consegui conectar ao servidor no momento. Verifique se o backend está rodando.');
+            updateMessage(loadingId, 'Desculpe, nao consegui falar com a IA agora. Tente novamente em instantes.');
         }
     };
 
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function appendMessage(sender, text) {
         const msgDiv = document.createElement('div');
-        msgDiv.className = `chat-message ${sender}`;
+        msgDiv.className = `msg ${sender}`;
         msgDiv.textContent = text;
         
         const id = `msg-${messageIdCounter++}`;

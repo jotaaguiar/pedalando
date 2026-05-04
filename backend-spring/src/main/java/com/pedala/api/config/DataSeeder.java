@@ -4,6 +4,7 @@ import com.pedala.api.bike.domain.Bike;
 import com.pedala.api.bike.repository.BikeRepository;
 import com.pedala.api.gps.service.GpsSimulatorService;
 import com.pedala.api.rental.domain.Rental;
+import com.pedala.api.rental.domain.RentalInvoice;
 import com.pedala.api.rental.domain.RentalStatus;
 import com.pedala.api.rental.domain.RentalType;
 import com.pedala.api.rental.repository.RentalRepository;
@@ -94,8 +95,17 @@ public class DataSeeder implements CommandLineRunner {
                     .dataInicio(Instant.now())
                     .dataDevolucaoPrevista(Instant.now().plus(30, ChronoUnit.DAYS))
                     .ativadoEm(Instant.now())
-                    .pagamentoStatus("pago")
+                        .pagamentoStatus("aprovado")
                     .build();
+
+                    RentalInvoice fatura = RentalInvoice.builder()
+                        .id("FAT-SEED-1")
+                        .dataVencimento(Instant.now())
+                        .valor(bikeToRent.getPrecoMensal())
+                        .status("pago")
+                        .pagoEm(Instant.now())
+                        .build();
+                    rental.addFatura(fatura);
 
             rental = rentalRepository.save(rental);
             log.info("  [seed] Aluguel criado para usuario {} com a bike {}", defaultUser.getEmail(), bikeToRent.getNome());
@@ -112,6 +122,30 @@ public class DataSeeder implements CommandLineRunner {
                     log.info("  [seed] Rastreador GPS reativado para a bike ID {}", r.getBikeId());
                 });
         }
+
+        // Backfill basico de faturas para alugueis sem registros
+        rentalRepository.findAll().forEach(r -> {
+            if (r.getFaturas() != null && !r.getFaturas().isEmpty()) return;
+            String status = r.getPagamentoStatus();
+            String faturaStatus = "pendente";
+            Instant pagoEm = null;
+            if ("aprovado".equals(status) || "pago".equals(status)) {
+                faturaStatus = "pago";
+                pagoEm = Instant.now();
+            } else if ("aguardando_aprovacao".equals(status)) {
+                faturaStatus = "aguardando_aprovacao";
+            }
+            RentalInvoice fatura = RentalInvoice.builder()
+                    .id("FAT-BACKFILL-" + r.getId())
+                    .dataVencimento(r.getDataInicio())
+                    .valor(r.getPreco())
+                    .status(faturaStatus)
+                    .pagoEm(pagoEm)
+                    .build();
+            r.addFatura(fatura);
+            rentalRepository.save(r);
+            log.info("  [seed] Fatura gerada para aluguel {} com status {}", r.getId(), faturaStatus);
+        });
 
         log.info("");
         log.info("  Admin:       admin@pedala.com / admin123");
