@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedala | Assinatura de bicicletas com entrega em casa</title>
+  <meta name="description" content="Assine sua bicicleta na Pedala.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <a href="#" class="navbar-logo">
+      <div class="logo-icon">P</div>
+      Pedala
+    </a>
+    <div class="navbar-nav">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#planos">Planos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <div class="navbar-actions" id="navActions">
+      <button class="theme-toggle" title="Mudar tema"></button>
+      <a href="pages/login.html" class="btn btn-secondary btn-sm">Entrar</a>
+      <a href="pages/register.html" class="btn btn-primary btn-sm">Criar conta</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-shell">
+        <div class="hero-content">
+          <div class="hero-copy">
+            <h1>A Revolução na sua <span class="highlight">Pedalada</span></h1>
+            <p>Bicicletas de alta performance com entregas rápidas e uma experiência premium para sua mobilidade urbana.</p>
+            <div class="hero-actions">
+              <a href="#catalogo" class="btn btn-primary btn-lg">Explorar catálogo</a>
+              <a href="pages/register.html" class="btn btn-secondary btn-lg">Criar conta</a>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <div class="hero-stat-value" id="heroFleetCount">6</div>
+                <div class="hero-stat-label">modelos ativos no catálogo</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-value" id="heroCategoryCount">6</div>
+                <div class="hero-stat-label">categorias exclusivas</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-value" id="heroDelivered">48h</div>
+                <div class="hero-stat-label">tempo médio de entrega</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-showcase">
+          <div class="hero-aside">
+            <div class="hero-visual">
+              <div class="hero-bike-frame">
+                <img id="heroBikeImage" src="assets/images/hero-bike.png" alt="Bicicleta Pedala">
+              </div>
+              <div class="hero-floating-card">
+                <div class="hero-floating-top">
+                  <div class="hero-floating-badge" id="heroBikeBadge">Modelo ativo</div>
+                  <div class="hero-floating-price">
+                    <strong id="heroBikePrice">R$0,00</strong>
+                    <span>/semana</span>
+                  </div>
+                </div>
+                <div>
+                  <h2 id="heroBikeName">Pedala City Plus</h2>
+                  <p id="heroBikeDescription">
+                    Ideal para o dia a dia urbano. Conforto e agilidade em um design funcional.
+                  </p>
+                </div>
+                <div class="hero-floating-meta">
+                  <div class="hero-meta-pill" id="heroBikeAvailability">Disponível agora</div>
+                  <div class="hero-meta-pill" id="heroBikeRange">Plano semanal</div>
+                  <div class="hero-meta-pill" id="heroBikeCategory">Urbana</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-tiles">
+              <div class="dflex-col gap-8">
+                <strong>Design funcional</strong>
+                <p>Bicicletas leves e otimizadas para o alto desempenho na cidade.</p>
+              </div>
+              <div class="dflex-col gap-8">
+                <strong>Entrega agendada</strong>
+                <p>Sua bicicleta entregue diretamente na sua porta, sem burocracia.</p>
+              </div>
+              <div class="dflex-col gap-8">
+                <strong>Manutenção inclusa</strong>
+                <p>Suporte técnico especializado sempre que você precisar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="catalog-highlights">
+          <article class="info-tile">
+            <div class="tile-icon">01</div>
+            <h3>Performance Excepcional</h3>
+            <p>Tecnologia avançada em cada componente para garantir um deslocamento fluido e superior em vias urbanas.</p>
+          </article>
+          <article class="info-tile">
+            <div class="tile-icon">02</div>
+            <h3>Estilo e Status</h3>
+            <p>Design premiado que eleva sua presença, mesclando estética requintada com aerodinâmica contemporânea.</p>
+          </article>
+          <article class="info-tile">
+            <div class="tile-icon">03</div>
+            <h3>Proteção Completa</h3>
+            <p>Cobertura contra furtos e danos com atendimento ágil para você nunca parar de se mover.</p>
+          </article>
+          <article class="info-tile">
+            <div class="tile-icon">04</div>
+            <h3>Suporte Dedicado</h3>
+            <p>Um verdadeiro concierge à sua disposição. Solicite manutenções preventivas sem alterar sua rotina.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalogo">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-kicker">Catálogo</div>
+          <h2 class="section-title">Escolha a bicicleta ideal para você.</h2>
+          <p class="section-sub">
+            Modelos selecionados para garantir conforto e agilidade no seu deslocamento diário.
+          </p>
+        </div>
+
+        <div class="catalog-toolbar">
+          <div class="bikes-filter" id="filterBtns">
+            <button class="filter-btn active" type="button" data-cat="">Todas</button>
+          </div>
+          <div class="catalog-summary" id="catalogSummary">Carregando bicicletas...</div>
+        </div>
+
+        <div class="bikes-grid" id="bikeGrid">
+          <div class="empty-state">
+            <strong>Carregando catalogo</strong>
+            <span>Buscando fotos e disponibilidade das bikes.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="como-funciona">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-kicker">Como funciona</div>
+          <h2 class="section-title">Sua bicicleta em poucos passos.</h2>
+          <p class="section-sub">Processo simples e totalmente digital, focado na sua praticidade.</p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-num">1</div>
+            <h3 class="step-title">Escolha o modelo</h3>
+            <p class="step-desc">Selecione a bicicleta que melhor atende às suas necessidades no nosso catálogo.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-num">2</div>
+            <h3 class="step-title">Defina o período</h3>
+            <p class="step-desc">Escolha entre planos semanais, quinzenais ou mensais de acordo com seu ritmo.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-num">3</div>
+            <h3 class="step-title">Receba em casa</h3>
+            <p class="step-desc">Agende a entrega e receba sua bicicleta pronta para uso, com manutenção inclusa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="planos">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-kicker">Planos</div>
+          <h2 class="section-title">Aluguel flexível para a sua rotina.</h2>
+          <p class="section-sub">Valores transparentes e sem pegadinhas. Escolha o período que preferir.</p>
+        </div>
+
+        <div class="plans-grid">
+          <article class="plan-card">
+            <h3 class="plan-name">Semanal</h3>
+            <div class="plan-price">R$59</div>
+            <div class="plan-period">Período de 7 dias</div>
+            <div class="plan-features">
+              <span>Entrega à domicílio agendada</span>
+              <span>Devolução rápida e digital</span>
+              <span>Ideal para testes ou uso pontual</span>
+            </div>
+            <a href="pages/register.html" class="btn btn-secondary btn-full">Começar agora</a>
+          </article>
+
+          <article class="plan-card featured">
+            <div class="plan-badge">Mais popular</div>
+            <h3 class="plan-name">Mensal</h3>
+            <div class="plan-price">R$169</div>
+            <div class="plan-period">Período de 30 dias</div>
+            <div class="plan-features">
+              <span>Melhor custo-benefício</span>
+              <span>Manutenção preventiva inclusa</span>
+              <span>Troca expressa em caso de problemas</span>
+            </div>
+            <a href="pages/register.html" class="btn btn-primary btn-full">Alugar agora</a>
+          </article>
+
+          <article class="plan-card">
+            <h3 class="plan-name">Quinzenal</h3>
+            <div class="plan-price">R$99</div>
+            <div class="plan-period">Período de 15 dias</div>
+            <div class="plan-features">
+              <span>Suporte técnico disponível</span>
+              <span>Ajustes na entrega</span>
+              <span>Flexibilidade total na renovação</span>
+            </div>
+            <a href="pages/register.html" class="btn btn-secondary btn-full">Começar agora</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-kicker">FAQ</div>
+          <h2 class="section-title">Tire suas dúvidas.</h2>
+          <p class="section-sub">Tudo o que você precisa saber sobre o aluguel das nossas bicicletas.</p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              Como funciona o processo de entrega da bicicleta?
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-a">Após a confirmação da sua assinatura, nosso time de logística agenda a entrega no endereço da sua preferência, garantindo que o equipamento chegue ajustado, higienizado e pronto para o uso imediato.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              O modelo de renovação da assinatura é automático?
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-a">Sim. Para sua conveniência, possuímos opções de renovação prática gerenciadas diretamente pelo seu painel de controle ou faturamento recorrente, evitando que sua mobilidade seja interrompida.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              Quais os procedimentos para devolução ou troca de modelo?
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-a">A devolução ou solicitação de upgrade pode ser feita digitalmente a qualquer momento dentro dos termos contratuais. Realizamos uma rápida avaliação na retirada para assegurar os altos padrões do nosso ecossistema.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              A disponibilidade visualizada reflete o inventário real em tempo real?
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-a">Completamente. Nosso sistema é diretamente espelhado na nossa central de distribuição, garantindo que a bicicleta de alta performance selecionada estará bloqueada e reservada para você.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contato">
+      <div class="cta-shell">
+        <h2>Pronto para começar?</h2>
+        <p>
+          Escolha sua bicicleta, defina o período e receba em casa. Sem burocracia, sem preocupações.
+        </p>
+        <div class="cta-actions">
+          <a href="pages/register.html" class="btn btn-primary btn-lg">Criar minha conta</a>
+          <a href="https://wa.me/5511999999999" target="_blank" rel="noreferrer" class="btn btn-secondary btn-lg">Falar com suporte</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-shell">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-logo">
+            <div class="logo-icon">P</div>
+            Pedala
+          </div>
+          <p>Aluguel de bicicletas premium com entrega agendada e manutenção completa inclusa.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#planos">Planos</a></li>
+            <li><a href="#como-funciona">Metodologia</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Acesso</h4>
+          <ul>
+            <li><a href="pages/login.html">Entrar</a></li>
+            <li><a href="pages/register.html">Cadastrar</a></li>
+            <li><a href="pages/dashboard.html">Minha conta</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <div class="footer-contact-item">contato@pedala.com.br</div>
+          <div class="footer-contact-item">(11) 99999-9999</div>
+          <div class="footer-contact-item">São Paulo, SP</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Pedala. Todos os direitos reservados.</span>
+        <div class="footer-bottom-links">
+          <a href="#faq">FAQ</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <button class="scroll-top" id="scrollTop" type="button">Top</button>
+
+  <!-- CHATBOT UI -->
+  <div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+      <div class="chatbot-title">Pedala Assistant ✨</div>
+      <button class="chatbot-close" id="chatbotClose">&times;</button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="chat-message bot">
+        Olá! Sou o assistente virtual da PedaLá. Como posso te ajudar a escolher a bicicleta perfeita hoje?
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbotInput" placeholder="Digite sua dúvida sobre nossas bikes..." autocomplete="off">
+      <button id="chatbotSend">Enviar</button>
+    </div>
+  </div>
+  <button class="chatbot-toggle" id="chatbotToggle">💬</button>
+
+  <script src="js/core/app.js"></script>
+  <script src="js/pages/index.page.js"></script>
+  <script src="js/core/chatbot.js"></script>
+</body>
+</html>
