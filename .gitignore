@@ -1,0 +1,13 @@
+# Env files
+.env
+backend-spring/.env
+
+# Build output
+backend-spring/target/
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
